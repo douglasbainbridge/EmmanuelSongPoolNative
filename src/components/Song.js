@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
 
 class Song extends Component {
     constructor() {
@@ -25,12 +26,16 @@ class Song extends Component {
             tracksLink
         } = this.props.song
         return (
-            <View
-                style={styles.card}
-                onClick={() => { this.setState({ expanded: !this.state.expanded }) }}
-            >
-                <View style={styles.button}>
+            <View style={styles.card}   >
+                <TouchableOpacity
+                    onPress={() => {
+                        this.setState({ expanded: !this.state.expanded })
+                    }}
+                    style={styles.button}>
                     {title && <Text>{title}</Text>}
+                </TouchableOpacity>
+                <View style={this.state.expanded ? styles.panelOpen : styles.panelClosed}>
+                    <Text>TEXT</Text>
                 </View>
             </View>
         )
@@ -44,10 +49,17 @@ Song.propTypes = {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: 'yellow',
+
     },
     button: {
         padding: 10
+    },
+    panelClosed: {
+        height: 0
+    },
+    panelOpen: {
+        height: 'auto',
+        backgroundColor: 'purple'
     }
 });
 

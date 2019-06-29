@@ -42,7 +42,7 @@ export default function PostPreach(props) {
                     <List title="Drawing Near" list={callToWorshipDraw} />
                 </ListColumn>
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn title="Revelation">
                     <List title="Name of Jesus" list={revelationName} />
                     <List title="Gospel Story" list={revelationStory} />
@@ -59,15 +59,15 @@ export default function PostPreach(props) {
                     <List title="God in Suffering" list={revelationSuffering} />
                 </ListColumn>
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn type="preach" />
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn title="Communion">
                     <List title="The Cross" list={communionCross} />
                 </ListColumn>
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn title="Revelation  ...or">
                     <List title="Name of Jesus" list={revelationName} />
                     <List title="Gospel Story" list={revelationStory} />
@@ -84,7 +84,7 @@ export default function PostPreach(props) {
                     <List title="God in Suffering" list={revelationSuffering} />
                 </ListColumn>
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn title="Response">
                     <List title="Adoration" list={responseAdoration} />
                     <List title="Reverence" list={responseReverence} />
@@ -94,7 +94,7 @@ export default function PostPreach(props) {
                     <List title="Kingdom Come" list={responseKingdom} />
                 </ListColumn>
             </View>
-            <View>
+            <View style={styles.list}>
                 <ListColumn title="Sending">
                     <List title="Mission" list={sendingMission} />
                 </ListColumn>
@@ -105,8 +105,5 @@ export default function PostPreach(props) {
 const styles = StyleSheet.create({
     list: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff'
     }
 });

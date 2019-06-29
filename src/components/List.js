@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 function List({ list, title }) {
     return (
         <View style={styles.list}>
-            {title && <Text>{title}</Text>}
+            {title && <Text style={styles.title}>{title}</Text>}
             {list.map(s => <Song key={s.title + s.artist} song={s} />)}
         </View>
     )
@@ -18,8 +18,14 @@ List.propTypes = {
 
 const styles = StyleSheet.create({
     list: {
-        backgroundColor: 'blue',
-        marginBottom: 20
+        backgroundColor: 'white',
+        marginBottom: 20,
+        borderRadius: 10,
+        padding: 10,
+        minHeight: 80
+    },
+    title: {
+        fontSize: 20
     }
 });
 

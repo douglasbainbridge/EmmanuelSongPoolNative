@@ -44,7 +44,6 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text>Header</Text>
         </View>
         <View style={styles.body}>
           <PostPreach songs={this.state.filteredSongs} />
@@ -59,7 +58,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 80,
+    height: 30,
+    justifyContent: 'flex-end',
+    backgroundColor: 'black'
   },
   body: {
     flexGrow: 1,

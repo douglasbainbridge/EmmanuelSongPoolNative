@@ -2,24 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import contentful from './config/contentful'
 import processContentful from './config/processContentful'
-import PostPreach from './views/PostPreach'
 import AsyncStorage from '@react-native-community/async-storage';
 import Router from './Router'
 
+//Redux
+import { Provider } from 'react-redux';
+import store from './store';
+
 export default class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      loading: true,
-      songs: [],
-      filteredSongs: [],
-      error: '',
-      filterFocus: false,
-      filterNew: false,
-    }
-  }
-
-
   componentDidMount() {
     //1. see if there is already data in async storage, if so use that immediately
 
@@ -28,65 +18,62 @@ export default class App extends Component {
     AsyncStorage.getItem('songs')
       .then(value => {
         if (value !== null) {
-          console.log("loaded from storage")
-          console.log(JSON.parse(value))
-          this.setState({
-            songs: JSON.parse(value),
-            filteredSongs: JSON.parse(value),
-            loading: false
-          })
+          store.dispatch({ type: 'GET_SONGS', payload: JSON.parse(value) })
         }
       })
       .catch(err => {
         console.log(err)
-        this.setState({
-          error: err,
-          loading: false
-        })
+        store.dispatch({ type: 'GET_ERROR', payload: err })
       })
     //also do this - async
     contentful()
       .then(content => {
         const validatedContent = processContentful(content)
         if (validatedContent.length === 0 && this.state.songs.length === 0) {
-          this.setState({
-            error: 'There was a problem loading, please try refreshing the page',
-            loading: false
-          })
+          store.dispatch({ type: 'GET_ERROR', payload: 'There was a problem loading, please try refreshing the page' })
         } else {
           //save data
           AsyncStorage.setItem('songs', JSON.stringify(validatedContent))
             .then(() => {
-              this.setState({
-                songs: validatedContent,
-                filteredSongs: validatedContent,
-                loading: false
-              })
+              store.dispatch({ type: 'GET_SONGS', payload: validatedContent })
             })
         }
       })
       .catch(err => {
         console.log(err)
-        this.setState({ loading: false, error: 'There was an error' })
+        store.dispatch({ type: 'GET_ERROR', payload: 'There was an error' })
       })
   }
 
   render() {
-    if (this.state.error) {
-      return (
-        <View style={styles.loading}>
-          <Text>{this.state.error}</Text>
-        </View>
-      )
-    }
-    if (this.state.loading) {
-      return (
-        <View style={styles.loading}>
-          <ActivityIndicator size="large" />
-        </View>
-      )
-    }
-    return <Router songs={this.state.filteredSongs} />;
+    console.log(store.getState())
+    return (
+      <Provider store={store}>
+        {store.getState().loading ? (
+          <View style={styles.loading}>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+            <Router />
+          )}
+
+      </Provider>
+    )
+    // if (this.state.error) {
+    //   return (
+    //     <View style={styles.loading}>
+    //       <Text>{this.state.error}</Text>
+    //     </View>
+    //   )
+    // }
+    // if (this.state.loading) {
+    //   return (
+    //     <View style={styles.loading}>
+    //       <ActivityIndicator size="large" />
+    //     </View>
+    //   )
+    // }
+    // return ;
   }
 }
 

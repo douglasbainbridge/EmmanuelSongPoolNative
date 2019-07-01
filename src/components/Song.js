@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, Text, View, TouchableOpacity, TouchableHighlight, Modal } from 'react-native';
+import Icon from './Icon'
 
 class Song extends Component {
     constructor() {
@@ -26,17 +26,36 @@ class Song extends Component {
             tracksLink
         } = this.props.song
         return (
-            <View style={styles.card}   >
+            <View>
                 <TouchableOpacity
                     onPress={() => {
                         this.setState({ expanded: !this.state.expanded })
                     }}
                     style={styles.button}>
-                    {title && <Text>{title}</Text>}
+                    {title && <Text style={styles.titleText}>{title}</Text>}
+
+                    {focusList && <Text style={styles.iconSection} title="Focus List Song"><Icon icon="star" /></Text>}
+                    {newSong && <Text style={styles.iconSection}>New</Text>}
+                    {bpm && <Text title="Suggested tempo"><Icon icon="tempo" />{" "}{bpm}</Text>}
+                    {maleKey && <Text style={styles.iconSection} title="Suggested male key"><Icon icon="male" />{" "}{maleKey}</Text>}
+                    {femaleKey && <Text style={styles.iconSection} title="Suggested female key"><Icon icon="female" />{" "}{femaleKey}</Text>}
                 </TouchableOpacity>
-                <View style={this.state.expanded ? styles.panelOpen : styles.panelClosed}>
-                    <Text>TEXT</Text>
-                </View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.expanded}
+                >
+                    <View style={styles.modal}>
+                        <View style={styles.modalContainer}>
+                            <TouchableHighlight
+                                onPress={() => {
+                                    this.setState({ expanded: false })
+                                }}>
+                                <Text>Hide Modal</Text>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                </Modal>
             </View>
         )
     }
@@ -48,19 +67,27 @@ Song.propTypes = {
 
 
 const styles = StyleSheet.create({
-    card: {
+    button: {
+        padding: 10,
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    titleText: {
+        overflow: 'hidden',
+        marginRight: 'auto'
+    },
+    iconSection: {
 
     },
-    button: {
-        padding: 10
+    modal: {
+        flex: 1,
+        justifyContent: 'center'
     },
-    panelClosed: {
-        height: 0
+    modalContainer: {
+        backgroundColor: 'white',
+        minHeight: 200
     },
-    panelOpen: {
-        height: 'auto',
-        backgroundColor: 'purple'
-    }
 });
 
 

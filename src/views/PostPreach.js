@@ -4,8 +4,9 @@ import filterSongBySubCat from '../config/filterSongBySubCat'
 import Swiper from 'react-native-swiper';
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux'
 
-export default function PostPreach(props) {
+function PostPreach(props) {
     const callToWorshipDeclaration = filterSongBySubCat(props.songs, 'Call To Worship', 'Declaration & Praise')
     const callToWorshipDraw = filterSongBySubCat(props.songs, 'Call To Worship', 'Drawing Near')
     const revelationName = filterSongBySubCat(props.songs, 'Revelation', 'Name of Jesus')
@@ -107,3 +108,5 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 });
+
+export default connect(state => { return state })(PostPreach);

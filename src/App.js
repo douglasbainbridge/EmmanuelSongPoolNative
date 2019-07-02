@@ -3,11 +3,9 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import contentful from './config/contentful'
 import processContentful from './config/processContentful'
 import AsyncStorage from '@react-native-community/async-storage';
-import Router from './Router'
-
-//Redux
 import { Provider } from 'react-redux';
 import store from './store';
+import LoadingSwitch from './LoadingSwitch';
 
 export default class App extends Component {
   componentDidMount() {
@@ -18,6 +16,7 @@ export default class App extends Component {
     AsyncStorage.getItem('songs')
       .then(value => {
         if (value !== null) {
+          console.log("about to dispatch")
           store.dispatch({ type: 'GET_SONGS', payload: JSON.parse(value) })
         }
       })
@@ -46,53 +45,10 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(store.getState())
     return (
       <Provider store={store}>
-        {store.getState().loading ? (
-          <View style={styles.loading}>
-            <ActivityIndicator size="large" />
-          </View>
-        ) : (
-            <Router />
-          )}
-
+        <LoadingSwitch />
       </Provider>
     )
-    // if (this.state.error) {
-    //   return (
-    //     <View style={styles.loading}>
-    //       <Text>{this.state.error}</Text>
-    //     </View>
-    //   )
-    // }
-    // if (this.state.loading) {
-    //   return (
-    //     <View style={styles.loading}>
-    //       <ActivityIndicator size="large" />
-    //     </View>
-    //   )
-    // }
-    // return ;
   }
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  container: {
-    flex: 1,
-  },
-  header: {
-    height: 30,
-    justifyContent: 'flex-end',
-    backgroundColor: 'black'
-  },
-  body: {
-    flexGrow: 1,
-    backgroundColor: 'black',
-  }
-});

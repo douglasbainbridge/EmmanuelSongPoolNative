@@ -47,6 +47,9 @@ class Song extends Component {
                     animationType="slide"
                     transparent={false}
                     visible={this.state.expanded}
+                    onRequestClose={() => {
+                        this.setState({ expanded: false })
+                    }}
                 >
                     <View style={styles.modal}>
                         <View style={styles.modalContainer}>
@@ -54,7 +57,7 @@ class Song extends Component {
                                 onPress={() => {
                                     this.setState({ expanded: false })
                                 }}>
-                                <Text>Hide Modal</Text>
+                                <Text>Close</Text>
                             </TouchableHighlight>
                         </View>
                     </View>

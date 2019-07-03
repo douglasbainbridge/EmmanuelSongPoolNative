@@ -12,7 +12,7 @@ const InitialLoad = (props) => {
             </View>
         )
     }
-    if (!props.initialLoading && props.error) {
+    if (!props.initialLoading && props.error && props.songs.length === 0) {
         return (
             <View style={styles.container}>
                 <View style={styles.card}>

@@ -1,5 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+
+const MenuButton = ({ onPress, title }) => {
+    return (
+        <TouchableOpacity
+            onPress={onPress}
+            style={styles.button}
+        >
+            <Text style={styles.buttonText}>
+                {title}
+            </Text>
+        </TouchableOpacity>
+    )
+}
+
 
 export default function Home(props) {
     return (
@@ -9,21 +24,18 @@ export default function Home(props) {
             </View>
             <View style={styles.menuContainer}>
                 <Text style={styles.text}>Where in the service is most of your worship time?</Text>
-                <Button
+                <MenuButton
                     title="mostly after the preach"
-                    color="#2886AE"
                     onPress={() => props.navigation.navigate('PostPreach')}
                 />
 
-                <Button
+                <MenuButton
                     title="mostly before the preach"
-                    color="#2886AE"
                     onPress={() => props.navigation.navigate('PrePreach')}
                 />
 
-                <Button
+                <MenuButton
                     title="view full view"
-                    color="#2886AE"
                     onPress={() => props.navigation.navigate('FullList')}
                 />
             </View>
@@ -45,13 +57,23 @@ const styles = StyleSheet.create({
         flex: 3
     },
     text: {
-        color: 'white'
+        color: 'white',
+        marginBottom: 12
     },
     header: {
         color: 'white',
         fontSize: 30
     },
-    menuButton: {
-        backgroundColor: 'white'
-    }
+    button: {
+        flexDirection: 'row',
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5
+    },
+    buttonText: {
+        fontSize: 20,
+        marginRight: 5,
+        color: '#2886AE'
+    },
 });

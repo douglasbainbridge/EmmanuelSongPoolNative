@@ -32,17 +32,20 @@ class Song extends Component {
                         this.setState({ expanded: !this.state.expanded })
                     }}
                     style={styles.button}>
-                    {title && <Text style={styles.titleText}>{title}</Text>}
+                    {title && <Text
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                        style={styles.titleText}>{title}</Text>}
 
-                    {focusList && <Text style={styles.iconSection} title="Focus List Song"><Icon icon="star" /></Text>}
-                    {newSong && <Text style={styles.iconSection}>New</Text>}
-                    {bpm && <Text title="Suggested tempo"><Icon icon="tempo" />{" "}{bpm}</Text>}
+                    {focusList && <Text style={styles.iconSection} title="Focus List Song"><Icon icon="star" style={{ color: '#EDC331' }} /></Text>}
+                    {newSong && <View style={styles.newBadge}><Text style={styles.newBadgeText}>New</Text></View>}
+                    {bpm && <Text style={styles.iconSection} title="Suggested tempo"><Icon icon="tempo" />{" "}{bpm}</Text>}
                     {maleKey && <Text style={styles.iconSection} title="Suggested male key"><Icon icon="male" />{" "}{maleKey}</Text>}
                     {femaleKey && <Text style={styles.iconSection} title="Suggested female key"><Icon icon="female" />{" "}{femaleKey}</Text>}
                 </TouchableOpacity>
                 <Modal
                     animationType="slide"
-                    transparent={true}
+                    transparent={false}
                     visible={this.state.expanded}
                 >
                     <View style={styles.modal}>
@@ -71,14 +74,26 @@ const styles = StyleSheet.create({
         padding: 10,
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     titleText: {
         overflow: 'hidden',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        flexShrink: 1,
+        fontSize: 18
+    },
+    newBadge: {
+        backgroundColor: '#DF7892',
+        padding: 3,
+        borderRadius: 4
+    },
+    newBadgeText: {
+        fontSize: 10
     },
     iconSection: {
-
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginRight: 3
     },
     modal: {
         flex: 1,
@@ -86,7 +101,7 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         backgroundColor: 'white',
-        minHeight: 200
+        minHeight: 200,
     },
 });
 

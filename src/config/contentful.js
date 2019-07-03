@@ -13,6 +13,7 @@ module.exports = () => new Promise((resolve, reject) => {
                 });
         })
         .catch((error) => {
-            reject(error);
+            console.log(error)
+            reject('Sorry, looks like there is a network error. Please try again once you have an internet connection');
         });
 })

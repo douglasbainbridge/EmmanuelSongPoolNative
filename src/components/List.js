@@ -20,12 +20,18 @@ const styles = StyleSheet.create({
     list: {
         backgroundColor: 'white',
         marginBottom: 20,
-        borderRadius: 10,
-        padding: 10,
-        minHeight: 80
+        borderRadius: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 15,
+        minHeight: 80,
+        borderColor: '#2886AE',
+        borderWidth: 3,
+        borderStyle: 'solid'
     },
     title: {
-        fontSize: 20
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 6
     }
 });
 

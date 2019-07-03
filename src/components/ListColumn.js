@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     list: {
         width: '100%',
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: '#030304',
         paddingTop: 20,
         paddingBottom: 60,
         paddingHorizontal: 10

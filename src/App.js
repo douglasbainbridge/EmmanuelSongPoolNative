@@ -5,7 +5,7 @@ import processContentful from './config/processContentful'
 import AsyncStorage from '@react-native-community/async-storage';
 import { Provider } from 'react-redux';
 import store from './store';
-import LoadingSwitch from './LoadingSwitch';
+import InitialLoad from './InitialLoad';
 
 export default class App extends Component {
   componentDidMount() {
@@ -16,8 +16,7 @@ export default class App extends Component {
     AsyncStorage.getItem('songs')
       .then(value => {
         if (value !== null) {
-          console.log("about to dispatch")
-          store.dispatch({ type: 'GET_SONGS', payload: JSON.parse(value) })
+          store.dispatch({ type: 'GET_SONGS_INITIAL', payload: JSON.parse(value) })
         }
       })
       .catch(err => {
@@ -34,20 +33,19 @@ export default class App extends Component {
           //save data
           AsyncStorage.setItem('songs', JSON.stringify(validatedContent))
             .then(() => {
-              store.dispatch({ type: 'GET_SONGS', payload: validatedContent })
+              store.dispatch({ type: 'GET_SONGS_INITIAL', payload: validatedContent })
             })
         }
       })
       .catch(err => {
-        console.log(err)
-        store.dispatch({ type: 'GET_ERROR', payload: 'There was an error' })
+        store.dispatch({ type: 'GET_ERROR', payload: err })
       })
   }
 
   render() {
     return (
       <Provider store={store}>
-        <LoadingSwitch />
+        <InitialLoad />
       </Provider>
     )
   }

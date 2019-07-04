@@ -35,14 +35,17 @@ function Filters(props) {
             <FilterButton
                 onPress={() => props.sort('title')}
                 text="Sort by title"
+                checked={props.sortedBy === "title"}
             />
             <FilterButton
                 onPress={() => props.sort('femaleKey')}
                 text="Sort by female key"
+                checked={props.sortedBy === "femaleKey"}
             />
             <FilterButton
                 onPress={() => props.sort('maleKey')}
                 text="Sort by male key"
+                checked={props.sortedBy === "maleKey"}
             />
         </View>
     )

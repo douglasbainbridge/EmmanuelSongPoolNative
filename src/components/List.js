@@ -7,7 +7,7 @@ function List({ list, title }) {
     return (
         <View style={styles.list}>
             {title && <Text style={styles.title}>{title}</Text>}
-            {list.map(s => <Song key={s.title + s.artist} song={s} />)}
+            {list.map(s => <Song key={s.id} song={s} />)}
         </View>
     )
 }

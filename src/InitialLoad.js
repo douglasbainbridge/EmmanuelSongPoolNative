@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#030304'
+        backgroundColor: '#030304',
+        padding: 50
     },
     card: {
         backgroundColor: 'white',
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
         minHeight: 200,
         borderColor: '#EDC331',
         borderWidth: 3,
-        borderStyle: 'solid'
+        borderStyle: 'solid',
     }
 });
 

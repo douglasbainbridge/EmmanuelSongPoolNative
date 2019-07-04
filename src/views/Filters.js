@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import { filter, sort } from '../actions'
 import Icon from '../components/Icon'
 
+
 const FilterButton = ({ onPress, text, checked }) => {
     return (
         <TouchableOpacity

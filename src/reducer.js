@@ -1,3 +1,5 @@
+
+
 const initialState = {
     initialLoading: true,
     songs: [],
@@ -33,7 +35,7 @@ export default function (state = initialState, action) {
         case 'SORT':
             return {
                 ...state,
-                songs: state.songs.sort((a, b) => {
+                songs: state.songs.slice().sort((a, b) => {
                     if (a[action.payload] < b[action.payload]) {
                         return -1;
                     }
@@ -42,7 +44,7 @@ export default function (state = initialState, action) {
                     }
                     return 0;
                 }),
-                filteredSongs: state.filteredSongs.sort((a, b) => {
+                filteredSongs: state.filteredSongs.slice().sort((a, b) => {
                     if (a[action.payload] < b[action.payload]) {
                         return -1;
                     }
@@ -50,7 +52,7 @@ export default function (state = initialState, action) {
                         return 1;
                     }
                     return 0;
-                })
+                }),
             }
 
         case 'GET_ERROR':

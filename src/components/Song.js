@@ -89,7 +89,7 @@ class Song extends Component {
                             <Text >
                                 {flowSubcategories.join(', ')}
                             </Text >
-                            <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>
+                            {notes && <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>}
                             <RichText text={notes} />
 
                             <TouchableOpacity
@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         padding: 40
-        //backgroundColor: '#030304'
     },
     modalContainer: {
         backgroundColor: 'white',
@@ -175,12 +174,11 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.34,
         shadowRadius: 6.27,
-
         elevation: 10,
     },
     closeButton: {
         width: '100%',
-
+        marginTop: 10
     },
     closeText: {
         color: 'black',

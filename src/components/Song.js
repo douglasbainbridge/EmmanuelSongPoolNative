@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, TouchableHighlight, Modal } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import Icon from './Icon'
 import richText from './RichText'
 
@@ -54,60 +54,74 @@ class Song extends Component {
                 >
                     <View style={styles.modal}>
                         <View style={styles.modalContainer}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 6 }}>
                                 {title}
                             </Text>
-
-                            <Text>
-                                {artist}
-                            </Text>
-
-                            <View style={{ display: 'flex', flexDirection: 'row' }}>
-                                <Text>
-                                    Male key:
-                            </Text>
-                                <Text >
-                                    {maleKey}
-                                </Text>
-                            </View>
-
-
-                            <Text>
-                                {femaleKey}
-                            </Text>
-
-                            <Text>
-                                {bpm}
-                            </Text>
-
-                            <Text>
-                                {spotifyLink}
-                            </Text>
-                            <Text>
-                                {chartsLink}
-                            </Text>
-                            <Text>
-                                {tracksLink}
-                            </Text>
-
-                            <Text>
+                            <ModalRow
+                                title="Artist:"
+                                text={artist}
+                            />
+                            <ModalRow
+                                title="Suggested male key:"
+                                text={maleKey}
+                            />
+                            <ModalRow
+                                title="Suggested female key:"
+                                text={femaleKey}
+                            />
+                            <ModalRow
+                                title="Suggested bpm:"
+                                text={bpm}
+                            />
+                            <ModalRow
+                                title="Spotify link:"
+                                text={spotifyLink}
+                            />
+                            <ModalRow
+                                title="Charts link:"
+                                text={chartsLink}
+                            />
+                            <ModalRow
+                                title="Tracks link:"
+                                text={tracksLink}
+                            />
+                            <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Themes:</Text>
+                            <Text >
                                 {flowSubcategories.join(', ')}
-                            </Text>
-                            <Text>Notes:</Text>
+                            </Text >
+                            <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>
                             <RichText text={notes} />
 
-                            <TouchableHighlight
+                            <TouchableOpacity
+                                style={styles.closeButton}
                                 onPress={() => {
                                     this.setState({ expanded: false })
                                 }}>
-                                <Text>Close</Text>
-                            </TouchableHighlight>
+                                <Text
+                                    numberOfLines={1}
+                                    style={styles.closeText}>close</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </Modal>
             </View>
         )
     }
+}
+
+const ModalRow = (props) => {
+    if (!props.text) { return null }
+    return (
+        <View style={{ display: 'flex', flexDirection: 'row', marginBottom: 6 }}>
+            <Text>
+                {props.title}
+            </Text>
+            <Text style={{ fontWeight: 'bold', marginLeft: 3 }}>
+                {props.text}
+            </Text>
+        </View>
+
+    )
 }
 
 Song.propTypes = {
@@ -149,10 +163,7 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         backgroundColor: 'white',
-        minHeight: 200,
         borderRadius: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: 20,
         borderColor: '#EDC331',
         borderWidth: 3,
@@ -166,6 +177,15 @@ const styles = StyleSheet.create({
         shadowRadius: 6.27,
 
         elevation: 10,
+    },
+    closeButton: {
+        width: '100%',
+
+    },
+    closeText: {
+        color: 'black',
+        fontSize: 18,
+        textAlign: 'center'
     },
 });
 

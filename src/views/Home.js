@@ -35,7 +35,7 @@ export default function Home(props) {
                 />
 
                 <MenuButton
-                    title="view full view"
+                    title="view full list"
                     onPress={() => props.navigation.navigate('FullList')}
                 />
             </View>
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
-        marginBottom: 12
+        marginBottom: 12,
+        fontSize: 16
     },
     header: {
         color: 'white',

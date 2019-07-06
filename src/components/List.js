@@ -1,13 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import Song from './Song'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 function List({ list, title }) {
     return (
         <View style={styles.list}>
             {title && <Text style={styles.title}>{title}</Text>}
-            {list.map(s => <Song key={s.id} song={s} />)}
+            <FlatList
+                keyExtractor={item => item.id}
+                data={list}
+                renderItem={(s) => <Song key={s.item.id} song={s.item} />}
+            />
         </View>
     )
 }

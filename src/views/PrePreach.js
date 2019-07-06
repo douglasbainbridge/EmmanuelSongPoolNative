@@ -1,7 +1,7 @@
 import React from 'react'
 import List from '../components/List'
 import filterSongBySubCat from '../config/filterSongBySubCat'
-import Swiper from 'react-native-swiper';
+import HorizontalScroll from '../components/HorizontalScroll';
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux'
@@ -34,11 +34,7 @@ function PrePreach(props) {
 
 
     return (
-        <Swiper
-            loop={false}
-            dotColor={'white'}
-            activeDotColor={'#2886AE'}
-        >
+        <HorizontalScroll >
             <View style={styles.list}>
                 <ListColumn title="Call to Worship">
                     <List title="Declaration and Praise" list={callToWorshipDeclaration} />
@@ -83,7 +79,7 @@ function PrePreach(props) {
                     <List title="Mission" list={sendingMission} />
                 </ListColumn>
             </View>
-        </Swiper>
+        </HorizontalScroll>
     )
 }
 const styles = StyleSheet.create({

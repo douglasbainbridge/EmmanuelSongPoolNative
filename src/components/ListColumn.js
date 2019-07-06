@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#030304',
         paddingTop: 20,
         paddingBottom: 60,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        maxWidth: 320
     },
     title: {
         fontSize: 30,

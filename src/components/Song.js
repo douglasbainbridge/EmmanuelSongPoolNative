@@ -113,7 +113,7 @@ class Song extends Component {
 
                             <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Themes:</Text>
                             <Text >
-                                {flowSubcategories.join(', ')}
+                                {flowSubcategories && flowSubcategories.join(', ')}
                             </Text >
                             {notes && <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>}
                             <RichText text={notes} />

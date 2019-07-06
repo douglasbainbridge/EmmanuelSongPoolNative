@@ -1,10 +1,10 @@
 import React from 'react'
 import List from '../components/List'
 import filterSongBySubCat from '../config/filterSongBySubCat'
-import Swiper from 'react-native-swiper';
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux'
+import HorizontalScroll from '../components/HorizontalScroll';
 
 function PostPreach(props) {
     const callToWorshipDeclaration = filterSongBySubCat(props.filteredSongs, 'Call To Worship', 'Declaration & Praise')
@@ -34,11 +34,7 @@ function PostPreach(props) {
 
 
     return (
-        <Swiper
-            loop={false}
-            dotColor={'white'}
-            activeDotColor={'#2886AE'}
-        >
+        <HorizontalScroll >
             <View style={styles.list}>
                 <ListColumn title="Call to Worship">
                     <List title="Declaration and Praise" list={callToWorshipDeclaration} />
@@ -102,7 +98,7 @@ function PostPreach(props) {
                     <List title="Mission" list={sendingMission} />
                 </ListColumn>
             </View>
-        </Swiper>
+        </HorizontalScroll>
     )
 }
 const styles = StyleSheet.create({

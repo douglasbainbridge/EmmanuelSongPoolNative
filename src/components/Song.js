@@ -203,9 +203,11 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         padding: 10
     },
     modalContainer: {
+        maxWidth: 360,
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 20,

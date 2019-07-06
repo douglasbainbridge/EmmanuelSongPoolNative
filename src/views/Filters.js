@@ -1,23 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { filter, sort } from '../actions'
 import Icon from '../components/Icon'
+import { isFlowPredicate } from '@babel/types';
 
 
-const FilterButton = ({ onPress, text, checked }) => {
-    return (
-        <TouchableOpacity
-            onPress={onPress}
-            style={styles.button}
-        >
-            <Text style={styles.buttonText}>
-                {text}
-            </Text>
-            {checked !== undefined && <Icon style={styles.buttonText} size={30} icon="check box" checked={checked} />}
-        </TouchableOpacity>
-    )
+class FilterButton extends Component {
+    constructor() {
+        super()
+        this.state = { loading: false }
+    }
+    componentWillReceiveProps(props) {
+        if (!props.loading) { this.setState({ loading: false }) }
+    }
+    render() {
+        const { onPress, text, checked } = this.props
+        const shouldCheck = this.state.loading ? !checked : checked
+        return (
+            <TouchableOpacity
+                onPress={() => {
+                    this.setState({ loading: true })
+                    onPress()
+                }
+                }
+                style={styles.button}
+            >
+                <Text style={styles.buttonText}>
+                    {text}
+                </Text>
+                {checked !== undefined && <Icon style={styles.buttonText} size={30} icon="check box" checked={shouldCheck} />}
+                {this.state.loading && <ActivityIndicator />}
+            </TouchableOpacity>
+        )
+    }
 }
+
 
 function Filters(props) {
     return (
@@ -26,6 +44,7 @@ function Filters(props) {
                 onPress={() => props.filter('filterFocus')}
                 text="Focus List"
                 checked={props.filterFocus}
+                loading={props.filterFocusLoading}
             />
             <FilterButton
                 onPress={() => props.filter('filterNew')}
@@ -36,6 +55,7 @@ function Filters(props) {
                 onPress={() => props.sort('title')}
                 text="Sort by title"
                 checked={props.sortedBy === "title"}
+                loading={props.sortedByLoading === "title"}
             />
             <FilterButton
                 onPress={() => props.sort('femaleKey')}

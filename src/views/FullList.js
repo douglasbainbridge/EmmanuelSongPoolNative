@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 function FullList(props) {
     return (
         <View style={styles.list}>
-            <ListColumn >
+            <ListColumn title="Full List">
                 <List list={props.filteredSongs} />
             </ListColumn>
         </View>

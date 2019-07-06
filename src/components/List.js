@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         minHeight: 80,
         borderColor: '#2886AE',
-        borderWidth: 3,
+        borderWidth: 8,
         borderStyle: 'solid'
     },
     title: {

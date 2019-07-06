@@ -2,18 +2,23 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons'
-import { faSpotify } from '@fortawesome/free-brands-svg-icons'
+import { faSpotify, faYoutube, faApple } from '@fortawesome/free-brands-svg-icons'
 import { faMale, faFemale, faDrum, faStickyNote, faLaptop, faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default (props) => {
     if (props.icon === "spotify") {
-        return <FontAwesomeIcon style={props.style} icon={faSpotify} />
+        return <FontAwesomeIcon color={props.color} size={props.size} style={props.style} icon={faSpotify} />
     }
-
+    if (props.icon === "youtube") {
+        return <FontAwesomeIcon color={props.color} size={props.size} style={props.style} icon={faYoutube} />
+    }
+    if (props.icon === "applemusic") {
+        return <FontAwesomeIcon color={props.color} size={props.size} style={props.style} icon={faApple} />
+    }
     if (props.icon === "male") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faMale}
             />
         )
@@ -21,7 +26,7 @@ export default (props) => {
     if (props.icon === "female") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faFemale}
             />
         )
@@ -29,7 +34,7 @@ export default (props) => {
     if (props.icon === "tempo") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faDrum}
             />
         )
@@ -37,7 +42,7 @@ export default (props) => {
     if (props.icon === "charts") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faStickyNote}
             />
         )
@@ -45,7 +50,7 @@ export default (props) => {
     if (props.icon === "tracks") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faLaptop}
             />
         )
@@ -53,7 +58,7 @@ export default (props) => {
     if (props.icon === "star") {
         return (
             <FontAwesomeIcon
-                style={props.style}
+                color={props.color} size={props.size} style={props.style}
                 icon={faStar}
             />
         )

@@ -36,6 +36,8 @@ function PostPreach(props) {
     return (
         <Swiper
             loop={false}
+            dotColor={'white'}
+            activeDotColor={'#2886AE'}
         >
             <View style={styles.list}>
                 <ListColumn title="Call to Worship">

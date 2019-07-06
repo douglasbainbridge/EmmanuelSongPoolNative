@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Linking } from 'react-native';
 import Icon from './Icon'
-import richText from './RichText'
+import RichText from './RichText'
+
 
 class Song extends Component {
     constructor() {
@@ -24,7 +25,9 @@ class Song extends Component {
             newSong,
             bpm,
             chartsLink,
-            tracksLink
+            tracksLink,
+            youtubeLink,
+            applemusicLink
         } = this.props.song
         return (
             <View>
@@ -73,18 +76,42 @@ class Song extends Component {
                                 title="Suggested bpm:"
                                 text={bpm}
                             />
-                            <ModalRow
-                                title="Spotify link:"
-                                text={spotifyLink}
-                            />
-                            <ModalRow
-                                title="Charts link:"
-                                text={chartsLink}
-                            />
-                            <ModalRow
-                                title="Tracks link:"
-                                text={tracksLink}
-                            />
+
+                            <View style={{
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                justifyContent: 'space-evenly'
+                            }}>
+
+                                <IconLink
+                                    title="YouTube"
+                                    icon="youtube"
+                                    link={youtubeLink}
+                                />
+                                <IconLink
+                                    title="Spotify"
+                                    icon="spotify"
+                                    link={spotifyLink}
+                                />
+                                <IconLink
+                                    title="Apple Music"
+                                    icon="applemusic"
+                                    link={applemusicLink}
+                                />
+                                <IconLink
+                                    title="Tracks"
+                                    icon="tracks"
+                                    link={tracksLink}
+                                />
+                                <IconLink
+                                    title="Chord Charts"
+                                    icon="charts"
+                                    link={chartsLink}
+                                />
+
+                            </View>
+
+
                             <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Themes:</Text>
                             <Text >
                                 {flowSubcategories.join(', ')}
@@ -121,6 +148,22 @@ const ModalRow = (props) => {
             </Text>
         </View>
 
+    )
+}
+
+const IconLink = (props) => {
+    if (!props.link) { return null }
+    return (
+        <TouchableOpacity
+            style={{ margin: 8 }}
+            onPress={() => {
+                Linking.openURL(props.link)
+                    .catch((err) => console.error('An error occurred', err))
+            }}
+        >
+            <Icon size={50} color={'#DF7892'} icon={props.icon} />
+            <Text style={{ fontSize: 6, color: '#DF7892', textAlign: 'center' }}>{props.title}</Text>
+        </TouchableOpacity>
     )
 }
 

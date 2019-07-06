@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { filter, sort } from '../actions'
 import Icon from '../components/Icon'
-import { isFlowPredicate } from '@babel/types';
 
 
 class FilterButton extends Component {

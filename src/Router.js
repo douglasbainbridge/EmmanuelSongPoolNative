@@ -36,7 +36,7 @@ const AppNavigator = createStackNavigator({
                 onPress={() => { navigation.navigate('Filters') }}
             />,
             headerRightContainerStyle: {
-                paddingRight: 20,
+                paddingRight: 10,
             },
         }),
     });

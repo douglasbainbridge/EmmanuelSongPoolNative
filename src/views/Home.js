@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import Logo from '../img/LogoWhite.png'
 
 const MenuButton = ({ onPress, title }) => {
     return (
@@ -24,10 +24,6 @@ export default function Home(props) {
             </View>
             <View style={styles.menuContainer}>
                 <Text style={styles.text}>Where in the service is most of your worship time?</Text>
-                <MenuButton
-                    title="mostly after the preach"
-                    onPress={() => props.navigation.navigate('PostPreach')}
-                />
 
                 <MenuButton
                     title="mostly before the preach"
@@ -35,8 +31,21 @@ export default function Home(props) {
                 />
 
                 <MenuButton
+                    title="mostly after the preach"
+                    onPress={() => props.navigation.navigate('PostPreach')}
+                />
+
+
+
+                <MenuButton
                     title="view full list"
                     onPress={() => props.navigation.navigate('FullList')}
+                />
+            </View>
+            <View>
+                <Image
+                    style={{ width: 40, height: 40, resizeMode: 'contain' }}
+                    source={Logo}
                 />
             </View>
         </View>
@@ -46,7 +55,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#030304',
-        padding: 30,
+        padding: 20,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -54,7 +63,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     menuContainer: {
-        flex: 3
+        flex: 3,
+        alignItems: 'center'
     },
     text: {
         color: 'white',

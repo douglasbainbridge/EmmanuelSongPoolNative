@@ -3,7 +3,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSpotify, faYoutube, faApple } from '@fortawesome/free-brands-svg-icons'
-import { faMale, faFemale, faDrum, faStickyNote, faLaptop, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faMale, faFemale, faDrum, faStickyNote, faLaptop, faStar, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 export default (props) => {
     if (props.icon === "spotify") {
@@ -69,6 +69,17 @@ export default (props) => {
                 size={props.size}
                 style={props.style}
                 icon={props.checked ? faCheckSquare : faSquare
+                }
+            />
+        )
+    }
+    if (props.icon === "arrow") {
+        return (
+            <FontAwesomeIcon
+                size={props.size}
+                color={props.color}
+                style={props.style}
+                icon={props.direction === "left" ? faArrowLeft : faArrowRight
                 }
             />
         )

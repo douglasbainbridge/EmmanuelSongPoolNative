@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Modal, Linking } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
+import Modal from "react-native-modal";
 import Icon from './Icon'
 import RichText from './RichText'
 
@@ -48,16 +49,14 @@ class Song extends Component {
                     {femaleKey && <Text style={styles.iconSection} title="Suggested female key"><Icon icon="female" />{" "}{femaleKey}</Text>}
                 </TouchableOpacity>
                 <Modal
-                    animationType="slide"
-                    transparent={true}
-                    visible={this.state.expanded}
-                    onRequestClose={() => {
-                        this.setState({ expanded: false })
-                    }}
+                    isVisible={this.state.expanded}
+                    onSwipeComplete={() => this.setState({ expanded: false })}
+                    onBackdropPress={() => this.setState({ expanded: false })}
+                    swipeDirection={['up', 'down']}
                 >
                     <View style={styles.modal}>
                         <View style={styles.modalContainer}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 6 }}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 22, marginBottom: 6 }}>
                                 {title}
                             </Text>
                             <ModalRow
@@ -162,7 +161,7 @@ const IconLink = (props) => {
             }}
         >
             <Icon size={50} color={'#DF7892'} icon={props.icon} />
-            <Text style={{ fontSize: 6, color: '#DF7892', textAlign: 'center' }}>{props.title}</Text>
+            <Text style={{ fontSize: 8, color: '#DF7892', textAlign: 'center' }}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
@@ -188,10 +187,13 @@ const styles = StyleSheet.create({
     newBadge: {
         backgroundColor: '#DF7892',
         padding: 3,
-        borderRadius: 4
+        borderRadius: 4,
+
     },
     newBadgeText: {
-        fontSize: 10
+        fontSize: 10,
+        color: 'white',
+        fontWeight: 'bold'
     },
     iconSection: {
         fontWeight: 'bold',
@@ -201,14 +203,14 @@ const styles = StyleSheet.create({
     modal: {
         flex: 1,
         justifyContent: 'center',
-        padding: 40
+        padding: 10
     },
     modalContainer: {
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 20,
         borderColor: '#EDC331',
-        borderWidth: 3,
+        borderWidth: 6,
         borderStyle: 'solid',
         shadowColor: "#000",
         shadowOffset: {
@@ -221,10 +223,11 @@ const styles = StyleSheet.create({
     },
     closeButton: {
         width: '100%',
-        marginTop: 10
+        marginTop: 10,
+        padding: 6
     },
     closeText: {
-        color: 'black',
+        color: '#2886AE',
         fontSize: 18,
         textAlign: 'center'
     },

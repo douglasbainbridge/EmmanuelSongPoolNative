@@ -42,11 +42,11 @@ class Song extends Component {
                         ellipsizeMode="tail"
                         style={styles.titleText}>{title}</Text>}
 
-                    {focusList && <Text style={styles.iconSection} title="Focus List Song"><Icon icon="star" style={{ color: '#EDC331' }} /></Text>}
+                    {focusList && <View style={styles.iconSection} ><Icon icon="star" style={{ color: '#EDC331' }} /><Text title="Focus List Song"></Text></View>}
                     {newSong && <View style={styles.newBadge}><Text style={styles.newBadgeText}>New</Text></View>}
-                    {bpm && <Text style={styles.iconSection} title="Suggested tempo"><Icon icon="tempo" />{" "}{bpm}</Text>}
-                    {maleKey && <Text style={styles.iconSection} title="Suggested male key"><Icon icon="male" />{" "}{maleKey}</Text>}
-                    {femaleKey && <Text style={styles.iconSection} title="Suggested female key"><Icon icon="female" />{" "}{femaleKey}</Text>}
+                    {bpm && <View style={styles.iconSection} ><Icon icon="tempo" /><Text title="Suggested tempo">{bpm}</Text></View>}
+                    {maleKey && <View style={styles.iconSection} ><Icon icon="male" /><Text title="Suggested male key">{maleKey}</Text></View>}
+                    {femaleKey && <View style={styles.iconSection} ><Icon icon="female" /><Text title="Suggested female key">{femaleKey}</Text></View>}
                 </TouchableOpacity>
                 <Modal
                     isVisible={this.state.expanded}
@@ -198,7 +198,9 @@ const styles = StyleSheet.create({
     iconSection: {
         fontWeight: 'bold',
         fontSize: 18,
-        marginRight: 3
+        marginRight: 3,
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     modal: {
         flex: 1,

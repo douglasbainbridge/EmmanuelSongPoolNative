@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Button } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import PostPreach from './views/PostPreach'
 import Home from './views/Home'
 import Filters from './views/Filters'
@@ -30,11 +30,10 @@ const AppNavigator = createStackNavigator({
             },
             headerTitleStyle: { color: 'white' },
             headerTintColor: 'white',
-            headerRight: <Button
-                title="Filter"
-                color='white'
+            headerRight: <TouchableOpacity
+                style={{ backgroundColor: '#030304' }}
                 onPress={() => { navigation.navigate('Filters') }}
-            />,
+            ><Text style={{ color: 'white', fontSize: 20 }}>Filter</Text></TouchableOpacity>,
             headerRightContainerStyle: {
                 paddingRight: 10,
             },

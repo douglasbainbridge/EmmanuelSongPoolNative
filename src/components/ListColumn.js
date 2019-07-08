@@ -30,13 +30,13 @@ export default function ListColumn(props) {
 
 const styles = StyleSheet.create({
     list: {
-        width: '100%',
         flex: 1,
         backgroundColor: '#030304',
         paddingTop: 20,
         paddingBottom: 60,
         paddingHorizontal: 10,
-        maxWidth: 320
+        maxWidth: 320,
+        minWidth: 280
     },
     title: {
         fontSize: 30,

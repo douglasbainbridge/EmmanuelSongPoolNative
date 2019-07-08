@@ -31,9 +31,11 @@ const AppNavigator = createStackNavigator({
             headerTitleStyle: { color: 'white' },
             headerTintColor: 'white',
             headerRight: <TouchableOpacity
-                style={{ backgroundColor: '#030304' }}
                 onPress={() => { navigation.navigate('Filters') }}
-            ><Text style={{ color: 'white', fontSize: 20 }}>Filter</Text></TouchableOpacity>,
+            ><Text style={{
+                color: 'white',
+                fontSize: 18
+            }}>Filter</Text></TouchableOpacity>,
             headerRightContainerStyle: {
                 paddingRight: 10,
             },

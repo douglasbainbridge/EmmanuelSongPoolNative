@@ -52,7 +52,7 @@ class Song extends Component {
                     isVisible={this.state.expanded}
                     onSwipeComplete={() => this.setState({ expanded: false })}
                     onBackdropPress={() => this.setState({ expanded: false })}
-                    swipeDirection={['up', 'down']}
+                    swipeDirection={['up', 'down', 'left', 'right']}
                 >
                     <View style={styles.modal}>
                         <View style={styles.modalContainer}>
@@ -210,6 +210,7 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         maxWidth: 360,
+        minWidth: 260,
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 20,

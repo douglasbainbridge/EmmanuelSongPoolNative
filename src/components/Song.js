@@ -227,7 +227,6 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     closeButton: {
-        width: '100%',
         marginTop: 10,
         padding: 6
     },

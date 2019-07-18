@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import Modal from "react-native-modal";
 import Icon from './Icon'
 import RichText from './RichText'
@@ -13,6 +13,18 @@ class Song extends Component {
             expanded: false
         }
     }
+    handleOnScroll = event => {
+        this.setState({
+            scrollOffset: event.nativeEvent.contentOffset.y,
+        });
+    };
+
+    handleScrollTo = p => {
+        if (this.scrollViewRef) {
+            this.scrollViewRef.scrollTo(p);
+        }
+    };
+
     render() {
         const {
             title,
@@ -28,7 +40,8 @@ class Song extends Component {
             chartsLink,
             tracksLink,
             youtubeLink,
-            applemusicLink
+            applemusicLink,
+            onSongLink
         } = this.props.song
         return (
             <View>
@@ -42,20 +55,27 @@ class Song extends Component {
                         ellipsizeMode="tail"
                         style={styles.titleText}>{title}</Text>}
 
-                    {focusList && <View style={styles.iconSection} ><Icon icon="star" style={{ color: '#EDC331' }} /><Text title="Focus List Song"></Text></View>}
+                    {focusList && <View style={styles.iconSection} ><Icon icon="star" style={{ color: '#EDC331' }} /><Text></Text></View>}
                     {newSong && <View style={styles.newBadge}><Text style={styles.newBadgeText}>New</Text></View>}
-                    {bpm && <View style={styles.iconSection} ><Icon icon="tempo" /><Text title="Suggested tempo">{bpm}</Text></View>}
-                    {maleKey && <View style={styles.iconSection} ><Icon icon="male" /><Text title="Suggested male key">{maleKey}</Text></View>}
-                    {femaleKey && <View style={styles.iconSection} ><Icon icon="female" /><Text title="Suggested female key">{femaleKey}</Text></View>}
+                    {bpm && <View style={styles.iconSection} ><Icon icon="tempo" /><Text> {bpm}</Text></View>}
+                    {maleKey && <View style={styles.iconSection} ><Icon icon="male" /><Text>{maleKey}</Text></View>}
+                    {femaleKey && <View style={styles.iconSection} ><Icon icon="female" /><Text>{femaleKey}</Text></View>}
                 </TouchableOpacity>
                 <Modal
                     isVisible={this.state.expanded}
                     onSwipeComplete={() => this.setState({ expanded: false })}
                     onBackdropPress={() => this.setState({ expanded: false })}
-                    swipeDirection={['up', 'down', 'left', 'right']}
+                    swipeDirection={['left', 'right']}
+                    scrollTo={this.handleScrollTo}
+                    scrollOffset={this.state.scrollOffset}
                 >
                     <View style={styles.modal}>
-                        <View style={styles.modalContainer}>
+                        <ScrollView
+                            ref={ref => (this.scrollViewRef = ref)}
+                            onScroll={this.handleOnScroll}
+                            scrollEventThrottle={16}
+                        >
+
                             <Text style={{ fontWeight: 'bold', fontSize: 22, marginBottom: 6 }}>
                                 {title}
                             </Text>
@@ -107,6 +127,11 @@ class Song extends Component {
                                     icon="charts"
                                     link={chartsLink}
                                 />
+                                <IconLink
+                                    title="OnSong"
+                                    icon="charts"
+                                    link={onSongLink}
+                                />
 
                             </View>
 
@@ -118,16 +143,17 @@ class Song extends Component {
                             {notes && <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>}
                             <RichText text={notes} />
 
-                            <TouchableOpacity
-                                style={styles.closeButton}
-                                onPress={() => {
-                                    this.setState({ expanded: false })
-                                }}>
-                                <Text
-                                    numberOfLines={1}
-                                    style={styles.closeText}>close</Text>
-                            </TouchableOpacity>
-                        </View>
+
+                        </ScrollView>
+                        <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={() => {
+                                this.setState({ expanded: false })
+                            }}>
+                            <Text
+                                numberOfLines={1}
+                                style={styles.closeText}>close</Text>
+                        </TouchableOpacity>
                     </View>
                 </Modal>
             </View>
@@ -160,8 +186,8 @@ const IconLink = (props) => {
                     .catch((err) => console.error('An error occurred', err))
             }}
         >
-            <Icon size={50} color={'#DF7892'} icon={props.icon} />
-            <Text style={{ fontSize: 8, color: '#DF7892', textAlign: 'center' }}>{props.title}</Text>
+            <Icon size={40} color={'#DF7892'} icon={props.icon} />
+            <Text style={{ fontSize: 8, color: '#DF7892', textAlign: 'center', marginTop: 3 }}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
@@ -182,13 +208,13 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         marginRight: 'auto',
         flexShrink: 1,
-        fontSize: 18
+        fontSize: 14
     },
     newBadge: {
         backgroundColor: '#DF7892',
         padding: 3,
         borderRadius: 4,
-
+        marginRight: 3,
     },
     newBadgeText: {
         fontSize: 10,
@@ -203,12 +229,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     modal: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10
-    },
-    modalContainer: {
+        maxHeight: 500,
         maxWidth: 360,
         minWidth: 260,
         backgroundColor: 'white',

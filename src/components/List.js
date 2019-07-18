@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: 20,
         borderRadius: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 0,
         paddingVertical: 15,
         minHeight: 80,
         borderColor: '#2886AE',
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 6
+        marginBottom: 6,
+        paddingHorizontal: 8
     }
 });
 

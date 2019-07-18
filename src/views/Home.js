@@ -42,7 +42,7 @@ export default function Home(props) {
                     onPress={() => props.navigation.navigate('FullList')}
                 />
             </View>
-            <View>
+            <View style={{ padding: 30 }}>
                 <Image
                     style={{ width: 40, height: 40, resizeMode: 'contain' }}
                     source={Logo}
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     },
     header: {
         color: 'white',
-        fontSize: 30
+        fontSize: 30,
+        textAlign: 'center'
     },
     button: {
         flexDirection: 'row',

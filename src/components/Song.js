@@ -65,7 +65,7 @@ class Song extends Component {
                     isVisible={this.state.expanded}
                     onSwipeComplete={() => this.setState({ expanded: false })}
                     onBackdropPress={() => this.setState({ expanded: false })}
-                    swipeDirection={['left', 'right']}
+                    //swipeDirection={['left', 'right']} cannot include for android scroll
                     scrollTo={this.handleScrollTo}
                     scrollOffset={this.state.scrollOffset}
                 >

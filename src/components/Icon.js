@@ -20,6 +20,7 @@ export default (props) => {
             <FontAwesomeIcon
                 color={props.color} size={props.size} style={props.style}
                 icon={faMale}
+                style={{ marginHorizontal: -2 }}
             />
         )
     }
@@ -28,6 +29,7 @@ export default (props) => {
             <FontAwesomeIcon
                 color={props.color} size={props.size} style={props.style}
                 icon={faFemale}
+                style={{ marginHorizontal: -2 }}
             />
         )
     }

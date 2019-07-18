@@ -55,11 +55,11 @@ class Song extends Component {
                         ellipsizeMode="tail"
                         style={styles.titleText}>{title}</Text>}
 
-                    {focusList && <View style={styles.iconSection} ><Icon icon="star" style={{ color: '#EDC331' }} /><Text></Text></View>}
+                    {focusList && <View style={styles.iconSection} ><Icon size={14} icon="star" style={{ color: '#EDC331' }} /></View>}
                     {newSong && <View style={styles.newBadge}><Text style={styles.newBadgeText}>New</Text></View>}
-                    {bpm && <View style={styles.iconSection} ><Icon icon="tempo" /><Text> {bpm}</Text></View>}
-                    {maleKey && <View style={styles.iconSection} ><Icon icon="male" /><Text>{maleKey}</Text></View>}
-                    {femaleKey && <View style={styles.iconSection} ><Icon icon="female" /><Text>{femaleKey}</Text></View>}
+                    {bpm && <View style={styles.iconSection} ><Icon size={14} icon="tempo" /><Text style={styles.iconSectionText}> {bpm}</Text></View>}
+                    {maleKey && <View style={styles.iconSection} ><Icon size={14} icon="male" /><Text style={styles.iconSectionText}>{maleKey}</Text></View>}
+                    {femaleKey && <View style={styles.iconSection} ><Icon size={14} icon="female" /><Text style={styles.iconSectionText}>{femaleKey}</Text></View>}
                 </TouchableOpacity>
                 <Modal
                     isVisible={this.state.expanded}
@@ -199,7 +199,8 @@ Song.propTypes = {
 
 const styles = StyleSheet.create({
     button: {
-        padding: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 8,
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
@@ -227,6 +228,9 @@ const styles = StyleSheet.create({
         marginRight: 3,
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    iconSectionText: {
+        fontSize: 12
     },
     modal: {
         maxHeight: 500,

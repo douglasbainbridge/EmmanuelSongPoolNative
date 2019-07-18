@@ -233,7 +233,8 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     modal: {
-        maxHeight: 500,
+        alignSelf: 'center',
+        maxHeight: 400,
         maxWidth: 360,
         minWidth: 260,
         backgroundColor: 'white',

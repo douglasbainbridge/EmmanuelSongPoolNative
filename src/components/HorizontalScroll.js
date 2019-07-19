@@ -4,29 +4,31 @@ import { Dimensions, ScrollView, View } from 'react-native'
 
 export default function HorizontalScroll(props) {
     const { width } = Dimensions.get('window');
-    if (width >= 768) {
+    if (width < 768 && props.children.length > 0) {
         return (
-            <ScrollView
-                horizontal={true}
-                bounces={false}
+
+            <Swiper
+                loop={false}
+                dotColor={'white'}
+                activeDotColor={'#2886AE'}
             >
-                {props.children}
-            </ScrollView>
+                {props.children.map(child =>
+                    <View key={child.key} style={{
+                        flex: 1,
+                        alignItems: 'center',
+                        backgroundColor: '#030304',
+                    }}>{child}</View>
+                )}
+            </Swiper>
         )
     }
+
     return (
-        <Swiper
-            loop={false}
-            dotColor={'white'}
-            activeDotColor={'#2886AE'}
+        <ScrollView
+            horizontal={true}
+            bounces={false}
         >
-            {props.children.map(child =>
-                <View key={child.key} style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    backgroundColor: '#030304',
-                }}>{child}</View>
-            )}
-        </Swiper>
+            {props.children}
+        </ScrollView>
     )
 }

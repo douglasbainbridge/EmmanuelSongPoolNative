@@ -1,7 +1,7 @@
 module.exports = (songs, cat, subcat) => {
     return songs.filter(s => s.flowCategories
-        && s.flowCategories.includes(cat)
+        && s.flowCategories.map(a => a.toLowerCase()).includes(cat.toLowerCase())
         && s.flowSubcategories
-        && s.flowSubcategories.includes(subcat)
+        && s.flowSubcategories.map(a => a.toLowerCase()).includes(subcat.toLowerCase())
     )
 }

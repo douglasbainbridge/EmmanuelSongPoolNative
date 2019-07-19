@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Icon from './Icon'
 
 export default function ListColumn(props) {
-    if (props.type === "preach") {
+    if (props.title === "preach") {
         return (
             <View style={styles.list}>
                 <Text style={styles.title}>Preach</Text>

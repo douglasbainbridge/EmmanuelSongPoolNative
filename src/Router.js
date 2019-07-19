@@ -4,7 +4,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import PostPreach from './views/PostPreach'
 import Home from './views/Home'
 import Filters from './views/Filters'
-import PrePreach from './views/PostPreach'
+import PrePreach from './views/PrePreach'
 import FullList from './views/FullList'
 
 const AppNavigator = createStackNavigator({

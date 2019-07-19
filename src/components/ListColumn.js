@@ -11,7 +11,7 @@ export default function ListColumn(props) {
                     flex: 1,
                     justifyContent: 'center',
                 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}><Icon color='white' icon="arrow" direction="left" /><Text style={{ color: 'white', fontSize: 20 }}>before the preach</Text></View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}><Icon color='white' icon="arrow" direction="left" /><Text style={{ color: 'white', fontSize: 20 }}> before the preach</Text></View>
                     <View style={{ justifyContent: 'flex-end', alignItems: 'center', flexDirection: 'row', textAlign: 'right' }}><Text style={{ color: 'white', fontSize: 20 }}>after the preach </Text><Icon color='white' icon="arrow" direction="right" /></View>
                 </View>
 

@@ -74,6 +74,7 @@ class Song extends Component {
                             ref={ref => (this.scrollViewRef = ref)}
                             onScroll={this.handleOnScroll}
                             scrollEventThrottle={16}
+                            alwaysBounceVertical={false}
                         >
 
                             <Text style={{ fontWeight: 'bold', fontSize: 22, marginBottom: 6 }}>

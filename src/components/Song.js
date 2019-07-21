@@ -43,6 +43,7 @@ class Song extends Component {
             applemusicLink,
             onSongLink
         } = this.props.song
+
         return (
             <View>
                 <TouchableOpacity

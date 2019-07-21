@@ -1,5 +1,4 @@
 import React from 'react'
-import List from '../components/List'
 import filterSongBySubCat from '../config/filterSongBySubCat'
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
@@ -67,17 +66,8 @@ function PostPreach(props) {
                     <ListColumn
                         title={c.title}
                         type={c.type}
-                    >
-                        {c.lists && (
-                            <FlatList
-                                keyExtractor={item => item.title}
-                                data={c.lists}
-                                renderItem={i => <List title={i.item.title} list={filterSongBySubCat(props.filteredSongs, c.category ? c.category : c.title, i.item.title)} />}
-                                initialNumToRender={c.lists.length}
-                            />
-                        )}
-
-                    </ListColumn>
+                        lists={c.lists && c.lists.map(a => { return { ...a, data: filterSongBySubCat(props.filteredSongs, c.category ? c.category : c.title, a.title) } })}
+                    />
                 </View>
             )}
         </HorizontalScroll>

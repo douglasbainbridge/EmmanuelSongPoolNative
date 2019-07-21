@@ -1,5 +1,4 @@
 import React from 'react'
-import List from '../components/List'
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux'
@@ -7,9 +6,10 @@ import { connect } from 'react-redux'
 function FullList(props) {
     return (
         <View style={styles.list}>
-            <ListColumn title="Full List">
-                <List list={props.filteredSongs} />
-            </ListColumn>
+            <ListColumn
+                title="Full List"
+                lists={[{ data: props.filteredSongs }]}
+            />
         </View>
     )
 }

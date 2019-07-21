@@ -24,6 +24,8 @@ export default function ListColumn(props) {
             {props.title && <Text style={styles.columnTitle}>{props.title}</Text>}
 
             <SectionList
+                stickySectionHeadersEnabled={true}
+                initialNumToRender={25}
                 keyExtractor={item => item.id}
                 renderSectionHeader={({ section }) => {
                     if (!section.title) { return null }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Linking } from 'react-native';
 import Logo from '../img/LogoWhite.png'
 
 const MenuButton = ({ onPress, title }) => {
@@ -14,6 +14,7 @@ const MenuButton = ({ onPress, title }) => {
         </TouchableOpacity>
     )
 }
+
 
 
 export default function Home(props) {
@@ -34,13 +35,18 @@ export default function Home(props) {
                     title="mostly after the preach"
                     onPress={() => props.navigation.navigate('PostPreach')}
                 />
-
-
-
                 <MenuButton
                     title="view full list"
                     onPress={() => props.navigation.navigate('FullList')}
                 />
+                <TouchableOpacity
+                    onPress={() => Linking.openURL('mailto:worship@weareemmanuel.com?subject=Song Pool Feedback&body=Hi there, please don\'t change the subject line of this email as it will get auto forwarded.')}
+                    style={styles.feedbackButton}
+                >
+                    <Text>
+                        Feedback
+                    </Text>
+                </TouchableOpacity>
             </View>
             <View style={{ padding: 30 }}>
                 <Image
@@ -88,5 +94,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginRight: 5,
         color: '#2886AE'
+    },
+    feedbackButton: {
+        flexDirection: 'row',
+        padding: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 5,
+        backgroundColor: '#EDC331',
+        borderRadius: 30,
+        marginTop: 10
     },
 });

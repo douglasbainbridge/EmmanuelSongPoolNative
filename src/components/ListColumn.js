@@ -30,14 +30,14 @@ export default function ListColumn(props) {
                 renderSectionHeader={({ section }) => {
                     if (!section.title) { return null }
                     return (
-                        <View style={styles.listMiddle}><Text style={styles.listTitle}>{section.title}</Text></View>
+                        <View style={[styles.listMiddle, { marginBottom: -1 }]}><Text style={styles.listTitle}>{section.title}</Text></View>
                     )
                 }}
                 renderItem={({ item }) => <View key={item.id} style={styles.listMiddle}><Song song={item} /></View>}
                 sections={props.lists}
                 ListFooterComponent={<View style={styles.listBottom}></View>}
                 ListHeaderComponent={<View style={styles.listTop}></View>}
-                renderSectionFooter={() => <View style={[styles.listMiddle, { paddingBottom: 20 }]} />}
+                renderSectionFooter={() => <View style={[styles.listMiddle, { height: 20, marginBottom: -1 }]} />}
             />
         </View>
     )

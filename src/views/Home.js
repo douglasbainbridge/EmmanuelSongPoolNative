@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#030304',
-        padding: 20,
+        padding: 18,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -81,14 +81,13 @@ const styles = StyleSheet.create({
     header: {
         color: 'white',
         fontSize: 30,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     button: {
         flexDirection: 'row',
-        padding: 20,
+        padding: 18,
         justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 5
+        alignItems: 'center'
     },
     buttonText: {
         fontSize: 20,
@@ -97,7 +96,8 @@ const styles = StyleSheet.create({
     },
     feedbackButton: {
         flexDirection: 'row',
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 5,

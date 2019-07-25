@@ -70,14 +70,14 @@ class Song extends Component {
                     scrollTo={this.handleScrollTo}
                     scrollOffset={this.state.scrollOffset}
                 >
-                    <View style={styles.modal}>
-                        <ScrollView
-                            ref={ref => (this.scrollViewRef = ref)}
-                            onScroll={this.handleOnScroll}
-                            scrollEventThrottle={16}
-                            alwaysBounceVertical={false}
-                        >
-
+                    <ScrollView
+                        ref={ref => (this.scrollViewRef = ref)}
+                        onScroll={this.handleOnScroll}
+                        scrollEventThrottle={16}
+                        alwaysBounceVertical={false}
+                        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}
+                    >
+                        <View style={styles.modal}>
                             <Text style={{ fontWeight: 'bold', fontSize: 22, marginBottom: 6 }}>
                                 {title}
                             </Text>
@@ -145,18 +145,18 @@ class Song extends Component {
                             {notes && <Text style={{ marginTop: 6, fontWeight: 'bold' }}>Notes:</Text>}
                             <RichText text={notes} />
 
+                        </View>
+                    </ScrollView>
 
-                        </ScrollView>
-                        <TouchableOpacity
-                            style={styles.closeButton}
-                            onPress={() => {
-                                this.setState({ expanded: false })
-                            }}>
-                            <Text
-                                numberOfLines={1}
-                                style={styles.closeText}>close</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity
+                        style={styles.closeButton}
+                        onPress={() => {
+                            this.setState({ expanded: false })
+                        }}>
+                        <Text
+                            numberOfLines={1}
+                            style={styles.closeText}>close</Text>
+                    </TouchableOpacity>
                 </Modal>
             </View>
         )
@@ -170,7 +170,7 @@ const ModalRow = (props) => {
             <Text>
                 {props.title}
             </Text>
-            <Text style={{ fontWeight: 'bold', marginLeft: 3 }}>
+            <Text style={{ flex: 1, flexWrap: 'wrap', fontWeight: 'bold', marginLeft: 3 }}>
                 {props.text}
             </Text>
         </View>
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     },
     modal: {
         alignSelf: 'center',
-        maxHeight: 400,
+        //maxHeight: 400,
         maxWidth: 360,
         minWidth: 260,
         backgroundColor: 'white',
@@ -255,13 +255,21 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     closeButton: {
+        alignSelf: 'center',
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 50,
+        backgroundColor: '#EDC331',
+        borderRadius: 30,
         marginTop: 10,
-        padding: 6
+        width: 100
     },
     closeText: {
-        color: '#2886AE',
+        color: 'black',
         fontSize: 18,
-        textAlign: 'center'
+        textAlign: 'center',
     },
 });
 

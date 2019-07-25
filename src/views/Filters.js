@@ -66,6 +66,11 @@ function Filters(props) {
                 text="Sort by male key"
                 checked={props.sortedBy === "maleKey"}
             />
+            <FilterButton
+                onPress={() => props.sort('bpm')}
+                text="Sort by BPM"
+                checked={props.sortedBy === "bpm"}
+            />
         </View>
     )
 }
@@ -83,7 +88,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flexDirection: 'row',
-        padding: 20,
+        padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 5

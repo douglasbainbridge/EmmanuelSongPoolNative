@@ -43,7 +43,7 @@ export default function Home(props) {
                     onPress={() => Linking.openURL('mailto:worship@weareemmanuel.com?subject=Song Pool Feedback&body=Hi there, please don\'t change the subject line of this email as it will get auto forwarded.')}
                     style={styles.feedbackButton}
                 >
-                    <Text>
+                    <Text style={styles.feedbackButtonText}>
                         Feedback
                     </Text>
                 </TouchableOpacity>
@@ -105,4 +105,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginTop: 10
     },
+    feedbackButtonText: {
+        color: 'black'
+    }
 });

@@ -11,6 +11,8 @@ export default function HorizontalScroll(props) {
                 loop={false}
                 dotColor={'white'}
                 activeDotColor={'#2886AE'}
+                bounces={true}
+                containerStyle={{ backgroundColor: '#030304' }}
             >
                 {props.children.map(child =>
                     <View key={child.key} style={{

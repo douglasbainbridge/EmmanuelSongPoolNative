@@ -16,6 +16,8 @@ function FullList(props) {
 const styles = StyleSheet.create({
     list: {
         flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
         backgroundColor: '#030304',
     }
 });

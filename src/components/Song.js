@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     },
     modal: {
         alignSelf: 'center',
-        //maxHeight: 400,
+        // minHeight: 200,
         maxWidth: 360,
         minWidth: 260,
         backgroundColor: 'white',

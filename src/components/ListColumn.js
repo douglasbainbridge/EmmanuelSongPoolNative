@@ -45,13 +45,15 @@ export default function ListColumn(props) {
 
 const styles = StyleSheet.create({
     column: {
+        //todo - stop search resizing
         flex: 1,
         backgroundColor: '#030304',
         paddingTop: 20,
-        paddingBottom: 60,
-        paddingHorizontal: 10,
-        maxWidth: 320,
-        minWidth: 280
+        // paddingBottom: 60,
+        paddingHorizontal: 20,
+        maxWidth: 420,
+        minWidth: 280,
+        width: '100%'
     },
     columnTitle: {
         fontSize: 30,
@@ -89,7 +91,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 6,
         borderBottomWidth: 6,
         borderStyle: 'solid',
-        marginTop: -20
+        marginTop: -20,
+        marginBottom: 20
     },
     listTitle: {
         fontSize: 24,

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { TextInput } from 'react-native';
 import { search } from '../actions'
+import { View } from 'react-native-animatable';
 
 
 class Search extends Component {
@@ -13,22 +14,31 @@ class Search extends Component {
     }
     render() {
         return (
-            <TextInput
-                placeholder="search..."
-                onChangeText={(e) => {
-                    this.props.search(e)
-                }}
-                autoFocus
+            <View
                 style={{
-                    height: 40,
-                    width: 220,
-                    padding: 8,
-                    borderColor: 'gray',
-                    borderWidth: 1,
-                    backgroundColor: 'white',
-                    borderRadius: 10
+                    width: '100%',
+                    paddingHorizontal: 20,
+                    maxWidth: 420,
                 }}
-            />
+            >
+                <TextInput
+                    placeholder="search..."
+                    clearButtonMode="always"
+                    returnKeyType="go"
+                    onChangeText={(e) => {
+                        this.props.search(e)
+                    }}
+                    autoFocus
+                    style={{
+                        height: 40,
+                        width: '100%',
+                        padding: 8,
+                        borderWidth: 1,
+                        backgroundColor: 'white',
+                        borderRadius: 10
+                    }}
+                />
+            </View>
         )
     }
 }

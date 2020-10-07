@@ -2,10 +2,12 @@ import React from 'react'
 import ListColumn from '../components/ListColumn';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux'
+import Search from '../components/Search'
 
 function FullList(props) {
     return (
         <View style={styles.list}>
+            <Search />
             <ListColumn
                 title="Full List"
                 lists={[{ data: props.filteredSongs }]}
@@ -16,8 +18,9 @@ function FullList(props) {
 const styles = StyleSheet.create({
     list: {
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#030304',
     }
 });

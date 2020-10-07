@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, SectionList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, SectionList, Dimensions } from 'react-native';
 import Icon from './Icon'
 import Song from './Song'
 
@@ -42,16 +42,16 @@ export default function ListColumn(props) {
         </View>
     )
 }
-
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     column: {
         flex: 1,
         backgroundColor: '#030304',
         paddingTop: 20,
-        paddingBottom: 60,
-        paddingHorizontal: 10,
-        maxWidth: 320,
-        minWidth: 280
+        paddingBottom: 50,
+        paddingHorizontal: 20,
+        width: width < 768 ? width : 400
+
     },
     columnTitle: {
         fontSize: 30,
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 6,
         borderBottomWidth: 6,
         borderStyle: 'solid',
-        marginTop: -20
+        marginTop: -20,
+        marginBottom: 20
     },
     listTitle: {
         fontSize: 24,

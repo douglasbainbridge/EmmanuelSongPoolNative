@@ -10,8 +10,8 @@ class FilterButton extends Component {
         super()
         this.state = { loading: false }
     }
-    componentWillReceiveProps(props) {
-        if (!props.loading) { this.setState({ loading: false }) }
+    componentDidUpdate() {
+        if (!this.props.loading && this.state.loading) { this.setState({ loading: false }) }
     }
     render() {
         const { onPress, text, checked } = this.props

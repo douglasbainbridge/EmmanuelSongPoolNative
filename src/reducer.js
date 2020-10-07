@@ -33,15 +33,34 @@ export default function (state = initialState, action) {
                 [action.payload + 'Loading']: true,
             }
         case 'FILTER':
-            state[action.payload] = !state[action.payload]
+            const checkText = (string, search) => String(string).toLowerCase().indexOf(String(search).toLowerCase()) > -1
+            const searchString = action.payload.searchString || ''
+            const splitText = searchString.toLowerCase().split(' ');
+            console.log(splitText)
+            state[action.payload.filter] = !state[action.payload.filter]
             return {
                 ...state,
-                [action.payload + 'Loading']: false,
+                [action.payload.filter + 'Loading']: false,
                 filteredSongs: state.songs.filter(s =>
                     (s.focusList || !state.filterFocus)
                     && (s.newSong || !state.filterNew)
+                    && (
+                        searchString.length < 3 ||
+                        splitText.every(text =>
+                            checkText(s.title, text)
+                            || checkText(s.artist, text)
+                            || checkText(s.flowCategories && s.flowCategories.join(), text)
+                            || checkText(s.flowSubcategories && s.flowSubcategories.join(), text)
+                        )
+                    )
                 ),
             }
+
+        case 'SEARCH':
+            return {
+                ...state
+            }
+
         case 'SORT':
             return {
                 ...state,

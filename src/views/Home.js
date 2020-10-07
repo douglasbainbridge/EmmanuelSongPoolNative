@@ -40,7 +40,7 @@ export default function Home(props) {
                     onPress={() => props.navigation.navigate('FullList')}
                 />
                 <TouchableOpacity
-                    onPress={() => Linking.openURL('mailto:worship@weareemmanuel.com?subject=Song Pool Feedback&body=Hi there, please don\'t change the subject line of this email as it will get auto forwarded.')}
+                    onPress={() => Linking.openURL('mailto:worship@weareemmanuel.com?subject=Song Pool Feedback&body=Hi there, please don\'t change the subject line of this email as it will get auto forwarded. If you would like to request that a song gets added, please let us know details on the song, along with a paragraph or two on why the think the song should be included.')}
                     style={styles.feedbackButton}
                 >
                     <Text style={styles.feedbackButtonText}>

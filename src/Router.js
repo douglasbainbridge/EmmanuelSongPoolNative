@@ -37,10 +37,10 @@ const AppNavigator = () => {
                     ),
 
                     headerRightContainerStyle: {
-                        paddingRight: 30,
+                        paddingRight: 20,
                     },
                     headerLeftContainerStyle: {
-                        paddingLeft: 10,
+                        paddingLeft: 5,
                     },
                     headerBackTitleVisible: false
                 })

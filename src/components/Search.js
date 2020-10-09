@@ -30,10 +30,12 @@ class Search extends Component {
                     }}
                     autoFocus
                     style={{
-                        height: 40,
+                        height: 50,
                         width: '100%',
                         padding: 8,
-                        borderWidth: 1,
+                        borderWidth: 6,
+                        borderColor: '#2886AE',
+                        borderStyle: 'solid',
                         backgroundColor: 'white',
                         borderRadius: 10
                     }}
